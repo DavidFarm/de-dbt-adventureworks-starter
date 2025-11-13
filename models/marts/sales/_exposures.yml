@@ -1,0 +1,11 @@
+version: 2
+exposures:
+  - name: sales_dashboard
+    type: dashboard
+    maturity: high
+    owner:
+      name: David Färm
+      email: you@example.com
+    depends_on:
+      - ref('fct_sales_daily')
+    description: "Example dashboard consuming the sales mart."

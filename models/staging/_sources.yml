@@ -1,0 +1,12 @@
+version: 2
+sources:
+  - name: adventureworks
+    database: AdventureWorks
+    schema: Sales
+    tables:
+      - name: SalesOrderHeader
+        loaded_at_field: ModifiedDate
+        freshness:
+          warn_after: {count: 7, period: day}
+          error_after: {count: 30, period: day}
+      - name: SalesOrderDetail

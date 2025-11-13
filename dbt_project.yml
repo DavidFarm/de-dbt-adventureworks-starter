@@ -1,0 +1,19 @@
+name: de_dbt_adventureworks
+version: 1.0.0
+profile: aw_sqlserver
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+models:
+  +materialized: view
+  staging:
+    +schema: staging
+  intermediate:
+    +schema: intermediate
+  marts:
+    +schema: marts

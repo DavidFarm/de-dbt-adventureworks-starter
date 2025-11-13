@@ -1,0 +1,7 @@
+version: 2
+models:
+  - name: int_sales_fact
+    tests:
+      - percent_nulls_under_threshold:
+          column_name: order_amount
+          max_pct: 0.01
