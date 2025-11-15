@@ -1,9 +1,7 @@
-# .dbtprofiles.yml
-aw_sqlserver
-  target ci
-  outputs
-    ci
-      # fake since real is local
-      type duckdb
-      path memory
-      schema main
+<profile-name>:aw_sqlserver
+  target: ci # this is the default target
+  outputs:
+    ci:
+      type: duckdb
+      schema: main
+      path: memory
