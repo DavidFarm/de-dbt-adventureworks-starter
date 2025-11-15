@@ -1,7 +1,9 @@
-<profile-name>:aw_sqlserver
-  target: ci # this is the default target
+# .dbt/profiles.yml  (for CI only)
+aw_sqlserver:
+  target: ci
   outputs:
     ci:
+      # CI uses DuckDB in-memory: no secrets, no drivers, no SQL Server.
       type: duckdb
+      path: ":memory:"
       schema: main
-      path: memory
