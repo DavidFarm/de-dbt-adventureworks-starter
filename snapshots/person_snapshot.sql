@@ -1,14 +1,16 @@
 -- snapshots/person_snapshot.sql
-{% snapshot person_snapshot %}
+{% snapshot customer_snapshot %}
 {{
   config(
-    target_database='AdventureWorks',
+    target_database='AdventureWorksDW2022',
     target_schema='dbt_snapshots',
-    unique_key='BusinessEntityID',
-    strategy='timestamp',
-    updated_at='ModifiedDate'
+    unique_key='CustomerKey',
+    strategy='check',
+    check_cols=['FirstName', 'LastName', 'EmailAddress']
   )
 }}
-select BusinessEntityID, FirstName, LastName, ModifiedDate
-from {{ source('adventureworks','Person') }}
+
+select *
+from {{ source('adventureworks', 'DimCustomer') }}
+
 {% endsnapshot %}
