@@ -12,7 +12,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: pip install dbt-core dbt-sqlserver dbt-duckdb sqlfluff
+      - run: pip install dbt-core dbt-sqlserver dbt-duckdb sqlfluff sqlfluff-templater-dbt
       - run: dbt deps --profiles-dir ./.dbt
       - run: dbt parse --profiles-dir ./.dbt
       - run: sqlfluff lint .
