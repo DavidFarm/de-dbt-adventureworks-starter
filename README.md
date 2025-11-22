@@ -13,23 +13,6 @@ A small, free portfolio project showing **dbt Core depth** on **SQL Server (Adve
 3) Create a local `profiles.yml` (do **not** commit it) with the sample below.
 4) Run: `dbt deps && dbt seed && dbt run && dbt test && dbt docs generate`
 
-### Sample `profiles.yml` (local only — DO NOT COMMIT)
-```yaml
-aw_sqlserver:
-  target: dev
-  outputs:
-    dev:
-      type: sqlserver
-      driver: "ODBC Driver 17 for SQL Server"
-      server: "localhost"
-      port: 1433
-      database: "AdventureWorks"
-      schema: "dbo"
-      user: "sa"
-      password: "YOUR_PASSWORD"
-      trust_cert: True
-```
-
 ## Proof checklist
 - [ ] Sources with freshness (`_sources.yml`) and docs screenshots in `/docs/`
 - [ ] Staging models with tests
@@ -38,3 +21,6 @@ aw_sqlserver:
 - [ ] Snapshot (Person)
 - [ ] Exposure for a (future) dashboard
 - [ ] CI green on PR (dbt parse + sqlfluff)
+
+## Comments
+AdventureWorksDW2022 is a static demo DB with last orders in 2014. Freshness is configured with a very wide window so that dbt can still demonstrate freshness checks without constantly flagging the sample data as stale

@@ -4,10 +4,30 @@ sources:
   - name: adventureworks
     database: AdventureWorksDW2022
     schema: dbo
+    description: "AdventureWorks 2022 data warehouse (DW) on SQL Server."
     tables:
       - name: FactInternetSales
+        description: "Internet sales fact table, one row per line item."
         loaded_at_field: OrderDate
         freshness:
-          warn_after: {count: 365, period: day}
-          error_after: {count: 1095, period: day}
+          warn_after: {count: 5000, period: day}
+        columns:
+          - name: SalesOrderNumber
+            description: "Sales order number (not unique here; one per line item)."
+          - name: CustomerKey
+            description: "Surrogate key to the customer dimension."
+          - name: OrderDate
+            description: "Order date for the sales line."
+          - name: SalesAmount
+            description: "Sales amount for the line item."
       - name: DimCustomer
+        description: "Customer dimension table, one row per customer."
+        columns:
+          - name: CustomerKey
+            description: "Surrogate key for the customer."
+          - name: FirstName
+            description: "Customer first name."
+          - name: LastName
+            description: "Customer last name."
+          - name: EmailAddress
+            description: "Customer email address."
