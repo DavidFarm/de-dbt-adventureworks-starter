@@ -5,7 +5,7 @@ models:
     description: "Order-level fact table built from FactInternetSales."
     columns:
       - name: sales_order_number
-        description: "Order number, unique at the order grain."
+        description: "Order number."
         tests: [not_null, unique]
       - name: customer_key
         description: "Customer surrogate key for this order."
@@ -20,3 +20,12 @@ models:
           - percent_nulls_under_threshold:
               column_name: order_amount
               max_pct: 0.01
+      - name: updated_at
+        description: "fake update timestamp since db does not have a real one (not a good one though)"
+        tests: [not_null]
+      - name: line_count
+        description: "No items (type) per order"
+        tests: 
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 1

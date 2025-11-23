@@ -7,12 +7,6 @@ A small, free portfolio project showing **dbt Core depth** on **SQL Server (Adve
 - exposures
 - CI via GitHub Actions (dbt parse + sqlfluff)
 
-## Quick start
-1) Create a new public repo on GitHub and push this folder (or use GitHub Desktop).
-2) Install: `pip install dbt-core dbt-sqlserver sqlfluff`
-3) Create a local `profiles.yml` (do **not** commit it) with the sample below.
-4) Run: `dbt deps && dbt seed && dbt run && dbt test && dbt docs generate`
-
 ## Proof checklist
 - [ ] Sources with freshness (`_sources.yml`) and docs screenshots in `/docs/`
 - [ ] Staging models with tests
