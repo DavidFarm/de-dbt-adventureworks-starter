@@ -1,11 +1,17 @@
 version: 2
+
 exposures:
-  - name: sales_dashboard
+  - name: daily_sales_overview
     type: dashboard
-    maturity: high
+    maturity: low
+    url: "https://example.com/noURL"
+    description: "Conceptual dashboard showing daily internet sales and order volumes."
+
     owner:
-      name: David Färm
-      email: you@example.com
+      name: "David Färm"
+      email: "david.farm12@outlook.com"
+
     depends_on:
       - ref('fct_sales_daily')
-    description: "Example dashboard consuming the sales mart."
+      - ref('int_sales_fact')
+      - ref('customers__dim_customer')
