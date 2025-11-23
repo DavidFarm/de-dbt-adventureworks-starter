@@ -1,10 +1,25 @@
 version: 2
+
 models:
   - name: sales__order_header
+    description: "Staging for FactInternetSales (one row per line item)."
     columns:
       - name: sales_order_number
+        description: "Sales order number from the DW fact table."
         tests: [not_null]
       - name: customer_key
+        description: "Customer surrogate key for this order line."
         tests: [not_null]
       - name: order_date
+        description: "Order date for the order line."
+        tests: [not_null]
+
+  - name: customers__dim_customer
+    description: "Staging for DimCustomer (one row per customer)."
+    columns:
+      - name: customer_key
+        description: "Surrogate key for the customer."
+        tests: [not_null, unique]
+      - name: email_address
+        description: "Customer email address."
         tests: [not_null]

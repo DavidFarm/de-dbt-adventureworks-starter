@@ -2,10 +2,20 @@ version: 2
 
 models:
   - name: int_sales_fact
+    description: "Order-level fact table built from FactInternetSales."
     columns:
       - name: sales_order_number
-        tests: [not_null]
+        description: "Order number, unique at the order grain."
+        tests: [not_null, unique]
+      - name: customer_key
+        description: "Customer surrogate key for this order."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('customers__dim_customer')
+              field: customer_key
       - name: order_amount
+        description: "Total sales amount per order."
         tests:
           - percent_nulls_under_threshold:
               column_name: order_amount

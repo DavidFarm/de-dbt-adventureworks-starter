@@ -10,10 +10,11 @@ macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
 
 models:
-  +materialized: view
-  staging:
-    +schema: staging
-  intermediate:
-    +schema: intermediate
-  marts:
-    +schema: marts
+  de_dbt_adventureworks:
+    +materialized: view
+    staging:
+      +schema: staging
+    intermediate:
+      +schema: intermediate
+    marts:
+      +schema: marts
