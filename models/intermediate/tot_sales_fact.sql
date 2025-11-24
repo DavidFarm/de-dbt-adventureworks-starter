@@ -12,7 +12,8 @@ select
   order_date,
   sales_amount,
   order_quantity,
-  product_key
+  product_key,
+  'Int' as sales_source
 from {{ ref('sales__order_header') }}
 union all
 select 
@@ -20,5 +21,6 @@ select
   order_date,
   sales_amount,
   order_quantity,
-  product_key
+  product_key,
+  'Res' as sales_source
 from {{ ref('sales__res_sales') }}
