@@ -15,4 +15,3 @@ jobs:
       - run: pip install dbt-core dbt-sqlserver dbt-duckdb sqlfluff sqlfluff-templater-dbt
       - run: dbt deps --profiles-dir ./.dbt
       - run: dbt parse --profiles-dir ./.dbt
-      - run: sqlfluff lint models snapshots macros

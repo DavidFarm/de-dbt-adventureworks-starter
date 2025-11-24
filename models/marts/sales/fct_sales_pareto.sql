@@ -26,7 +26,7 @@ final as (
 		SUM(s.sales) over (order by s.sales desc rows between unbounded preceding and current row) as running_total,
         rank() over(order by s.sales desc) as ranking
 	from
-		total_prod s cross join total_all
+		total_prod as s, total_all
 	)
 select 
 	p.product_name,
@@ -36,6 +36,6 @@ select
 	s.running_total,
     s.running_total / total_all.total as running_perc,
     s.ranking
-from final s join products p on s.product_key = p.product_key 
-	join category c on c.subcategory_key = p.subcategory_key cross join total_all
+from final as s join products p on s.product_key = p.product_key 
+	join category as c on c.subcategory_key = p.subcategory_key, total_all
 where running_total <= total_all.total * 0.8
