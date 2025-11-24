@@ -1,10 +1,9 @@
--- models/staging/sales__order_header.sql
+-- models/staging/sales__res_sales.sql
 with src as (
-  select * from {{ source('adventureworks', 'FactInternetSales') }}
+  select * from {{ source('adventureworks', 'FactResellerSales') }}
 )
 select
   SalesOrderNumber        as sales_order_number,
-  CustomerKey             as customer_key,
   OrderDate               as order_date,
   SalesAmount             as sales_amount,
   OrderQuantity           as order_quantity,

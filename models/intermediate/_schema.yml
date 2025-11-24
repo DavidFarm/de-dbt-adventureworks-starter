@@ -29,3 +29,21 @@ models:
           - not_null
           - dbt_utils.accepted_range:
               min_value: 1
+  - name: tot_sales_fact
+    description: "Combined fact table built from FactInternetSales and FactResellerSales."
+    columns:
+      - name: sales_order_number
+        description: "Order number."
+        tests: [not_null]
+      - name: order_date
+        description: "Order date."
+        tests: [not_null]
+      - name: sales_amount
+        description: "Order price."
+        tests: [not_null]
+      - name: order_quantity
+        description: "Order quantity."
+        tests: [not_null]
+      - name: product_key
+        description: "FK to products__dim_product."
+        tests: [not_null]

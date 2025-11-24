@@ -15,3 +15,20 @@ exposures:
       - ref('fct_sales_daily')
       - ref('int_sales_fact')
       - ref('customers__dim_customer')
+
+  - name: pareto_sales_overview
+    type: dashboard
+    maturity: low
+    url: "https://example.com/noURL"
+    description: "Conceptual dashboard showing all products whose sales contribute to 80% of total sales."
+
+    owner:
+      name: "David Färm"
+      email: "david.farm12@outlook.com"
+
+    depends_on:
+      - ref('tot_sales_fact')
+      - ref('sales__order_header')
+      - ref('sales__res_sales')
+      - ref('products_dim_product')
+      - ref('products_dim_subcategory')

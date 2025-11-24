@@ -20,6 +20,26 @@ sources:
             description: "Order date for the sales line."
           - name: SalesAmount
             description: "Sales amount for the line item."
+          - name: OrderQuantity
+            description: "order quantity for the line item."
+          - name: ProductKey
+            description: "FK for DimProduct."
+      - name: FactResellerSales
+        description: "Reseller sales fact table, one row per line item."
+        loaded_at_field: OrderDate
+        freshness:
+          warn_after: {count: 5000, period: day}
+        columns:
+          - name: SalesOrderNumber
+            description: "Sales order number (not unique here; one per line item)."
+          - name: OrderDate
+            description: "Order date for the sales line."
+          - name: SalesAmount
+            description: "Sales amount for the line item."
+          - name: OrderQuantity
+            description: "order quantity for the line item."
+          - name: ProductKey
+            description: "FK for DimProduct."
       - name: DimCustomer
         description: "Customer dimension table, one row per customer."
         columns:
@@ -31,3 +51,21 @@ sources:
             description: "Customer last name."
           - name: EmailAddress
             description: "Customer email address."
+      - name: DimProduct
+        description: "Product dimension table."
+        columns:
+          - name: ProductKey
+            description: "Surrogate key for the product."
+          - name: ProductSubCategoryKey
+            description: "Key to subcategory."
+          - name: EnglishProductName
+            description: "Product name."
+      - name: DimProductSubcategory
+        description: "Product subcategory dimension table."
+        columns:
+          - name: ProductSubCategoryKey
+            description: "Surrogate key for the sub category."
+          - name: ProductCategoryKey
+            description: "Key to category."
+          - name: EnglishProductSubcategoryName
+            description: "Category name."

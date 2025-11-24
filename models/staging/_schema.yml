@@ -13,6 +13,28 @@ models:
       - name: order_date
         description: "Order date for the order line."
         tests: [not_null]
+      - name: order_quantity
+        description: "Order quantity for the order line."
+        tests: [not_null]
+      - name: product_key
+        description: "FK for the product."
+        tests: [not_null]
+
+  - name: sales__res_sales
+    description: "Staging for FactResellerSales (one row per line item)."
+    columns:
+      - name: sales_order_number
+        description: "Sales order number from the DW fact table."
+        tests: [not_null]
+      - name: order_date
+        description: "Order date for the order line."
+        tests: [not_null]
+      - name: order_quantity
+        description: "Order quantity for the order line."
+        tests: [not_null]
+      - name: product_key
+        description: "FK for the product."
+        tests: [not_null]
 
   - name: customers__dim_customer
     description: "Staging for DimCustomer (one row per customer)."
@@ -22,4 +44,27 @@ models:
         tests: [not_null, unique]
       - name: email_address
         description: "Customer email address."
+        tests: [not_null]
+  - name: products_dim_product
+    description: "Staging for DimProduct."
+    columns:
+      - name: product_key
+        description: "Surrogate key for the product."
+        tests: [not_null, unique]
+      - name: product_name
+        description: "Product name."
+        tests: [not_null]
+      - name: subcategory_key
+        description: "FK to products_dim_subcategory."
+  - name: products_dim_subcategory
+    description: "Staging for DimProductSubCategory."
+    columns:
+      - name: subcategory_key
+        description: "Surrogate key for the subcategory."
+        tests: [not_null, unique]
+      - name: subcategory_name
+        description: "Subcategory name."
+        tests: [not_null]
+      - name: subcategory_category_key
+        description: "FK to category."
         tests: [not_null]
