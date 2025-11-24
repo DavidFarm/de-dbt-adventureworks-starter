@@ -1,6 +1,7 @@
 [sqlfluff]
 dialect = tsql
 templater = dbt
+exclude_paths = dbt_packages/
 
 # Turn off some aggressive layout / capitalisation rules for now
 exclude_rules = LT01,LT02,LT05,LT08,CP02,RF02
