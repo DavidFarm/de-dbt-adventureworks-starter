@@ -2,12 +2,10 @@
 dialect = tsql
 templater = dbt
 exclude_paths = dbt_packages/*
+max_line_length = 120
 
 # Turn off some aggressive layout / capitalisation rules for now
 exclude_rules = LT01,LT02,LT05,LT08,CP02,RF02
-
-[sqlfluff:rules]
-max_line_length = 120
 
 [sqlfluff:templater:dbt]
 # Point to this dbt project and CI profile
